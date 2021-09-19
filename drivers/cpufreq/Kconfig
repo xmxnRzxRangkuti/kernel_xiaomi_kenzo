@@ -118,46 +118,6 @@ config CPU_FREQ_DEFAULT_GOV_INTERACTIVE
 	  loading your cpufreq low-level hardware driver, using the
 	  'interactive' governor for latency-sensitive workloads.
 
-config CPU_FREQ_DEFAULT_GOV_BIOSHOCK
-	bool "BioShock"
-	select CPU_FREQ_GOV_BIOSHOCK
-	help
-	  Default governor of BioShock kernel
-
-config CPU_FREQ_DEFAULT_GOV_IMPULSE
-	bool "impulse"
-	select CPU_FREQ_GOV_IMPULSE
-	help
-	  Use the CPUFreq governor 'impulse' as default. This allows
-	  you to get a full dynamic cpu frequency capable system by simply
-	  loading your cpufreq low-level hardware driver, using the
-	  'impulse' governor for latency-sensitive workloads.
-
-config CPU_FREQ_DEFAULT_GOV_ELEMENTALX
-	bool "elementalx"
-	select CPU_FREQ_GOV_ELEMENTALX
-	select CPU_FREQ_GOV_PERFORMANCE
-	help
-	  Use the CPUFreq governor 'elementalx' as default.
-
-config CPU_FREQ_DEFAULT_GOV_ZZMOOVE
-	bool "zzmoove"
-	select CPU_FREQ_GOV_ZZMOOVE
-	select CPU_FREQ_GOV_PERFORMANCE
-	help
-	  Use the CPUFreq governor 'zzmoove' as default, using predefined
-	  frequency lookup tables and optimized scaling triggers instead of
-	  % frequency steps to get smooth up/downscaling dependant on CPU load.
-
-config CPU_FREQ_DEFAULT_GOV_CAFACTIVE
-	bool "cafactive"
-	select CPU_FREQ_GOV_CAFACTIVE
-	help
-	  Use the CPUFreq governor 'cafactive' as default. This allows
-	  you to get a full dynamic cpu frequency capable system by simply
-	  loading your cpufreq low-level hardware driver, using the
-	  'cafactive' governor for latency-sensitive workloads.
-
 endchoice
 
 config CPU_FREQ_GOV_PERFORMANCE
@@ -232,38 +192,6 @@ config CPU_FREQ_GOV_INTERACTIVE
 
 	  If in doubt, say N.
 
-config CPU_FREQ_GOV_ELEMENTALX
-	tristate "'elementalx' cpufreq policy governor"
-	select CPU_FREQ_TABLE
-	help
-	  'elementalx' - This driver adds a dynamic cpufreq policy governor.
-
-	  To compile this driver as a module, choose M here: the
-	  module will be called cpufreq_elementalx.
-
-	  For details, take a look at linux/Documentation/cpu-freq.
-
-config CPU_FREQ_GOV_CAFACTIVE
-	tristate "'cafactive' cpufreq policy governor"
-	help
-	  'cafactive' - CodeAurora(Qualcomm) version of interactive
-	  cpufreq policy governor.
-
-	  To compile this driver as a module, choose M here: the
-	  module will be called cpufreq_cafactive.
-
-	  If in doubt, say N.
-
-config CPU_FREQ_GOV_ZZMOOVE
-	tristate "'zzmoove' cpufreq governor"
-	depends on CPU_FREQ
-	help
-	  'zzmoove' - based on cpufreq_conservative, using predefined
-	  frequency lookup tables and optimized scaling triggers instead of
-	  % frequency steps to get smooth up/downscaling dependant on CPU load.
-
-	  if in doubt, say N.
-
 config CPU_FREQ_GOV_CONSERVATIVE
 	tristate "'conservative' cpufreq governor"
 	depends on CPU_FREQ
@@ -305,19 +233,6 @@ config FINGERPRINT_BOOST
 	help
 	  Boosts available CPUs to max frequency on fingerprint sensor input.
 
-
-
-config CPU_FREQ_GOV_IMPULSE
-	tristate "'interactive' cpufreq policy governor"
-	help
-	  'impulse' - This driver adds a dynamic cpufreq policy governor
-	  designed for latency-sensitive workloads.
-
-config CPU_FREQ_GOV_BIOSHOCK
-	tristate "'bioshock' cpufreq bioshock"
-	depends on CPU_FREQ
-	help
-	  'bioshock' - More aggressive version of conservative
 
 config GENERIC_CPUFREQ_CPU0
 	tristate "Generic CPU0 cpufreq driver"
